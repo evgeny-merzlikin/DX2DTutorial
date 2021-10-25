@@ -1,5 +1,7 @@
 #include <windows.h>
 #include "Graphics.h"
+#include "Level1.h"
+#include "GameController.h"
 
 Graphics* graphics;
 
@@ -7,22 +9,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	if (uMsg == WM_DESTROY) { PostQuitMessage(0); return 0; }
 
-	if (uMsg == WM_PAINT) 
-	{
-		graphics->BeginDraw();
-		graphics->ClearScreen(0.94f, 0.94f, 0.94f);
-		
-		for (int i = 0; i < 1000; i++)
-		{
-			graphics->DrawCircle(rand()%800, rand()%600, rand()%100, 
-				rand()%100/100.0f, 
-				rand()%100/100.0f, 
-				rand()%100/100.0f, 
-				rand()%100/100.0f);
-		}
-		
-		graphics->EndDraw();
-	}
+
 
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
@@ -62,11 +49,38 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPWSTR cmd, int
 
 	ShowWindow(windowhandle, SW_NORMAL);
 
+	GameController::LoadInitialLevel(new Level1);
+
+
 	MSG message;
+	message.message = WM_NULL;
+
+
+	while (message.message != WM_QUIT)
+	{
+		if (PeekMessage(&message, NULL, 0, 0, PM_REMOVE))
+			DispatchMessage(&message);
+		else 
+		{
+			//Update!
+			GameController::Update();
+			// Render!
+			graphics->BeginDraw();
+			GameController::Render(graphics);
+			
+			graphics->EndDraw();
+
+		}
+		
+
+	}
+
+	/*
+	
 	while (GetMessage(&message, NULL, 0, 0))
 	{
 		DispatchMessage(&message);
-	}
+	}*/
 
 	delete graphics;
 	return 0;
