@@ -154,6 +154,7 @@
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="HPTimer.h" />
     <ClInclude Include="Level1.h" />
     <ClInclude Include="SpriteSheet.h" />
   </ItemGroup>

@@ -5,13 +5,12 @@
 
 class Level1: public GameLevel
 {
-	float y;
-	float ySpeed;
+	float xPosition;
 	SpriteSheet* sprites;
 
 public:
 	void Load() override;
 	void Unload() override;
 	void Render() override;
-	void Update() override;
+	void Update(double timeTotal, double timeDelta) override;
 };

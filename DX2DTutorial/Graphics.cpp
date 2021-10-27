@@ -42,6 +42,6 @@ void Graphics::DrawCircle(float x, float y, float radius, float r, float g, floa
 {
 	brush->SetColor(D2D1::ColorF(r, g, b, a));
 
-	; renderTarget->DrawEllipse(D2D1::Ellipse(D2D1::Point2F(x, y), radius, radius), brush, 3.0f);
-	renderTarget->FillEllipse(D2D1::Ellipse(D2D1::Point2F(x, y), radius, radius), brush);
+	renderTarget->DrawEllipse(D2D1::Ellipse(D2D1::Point2F(x, y), radius, radius), brush, 3.0f);
+	//renderTarget->FillEllipse(D2D1::Ellipse(D2D1::Point2F(x, y), radius, radius), brush);
 }

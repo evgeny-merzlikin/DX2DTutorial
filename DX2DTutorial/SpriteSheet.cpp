@@ -62,7 +62,7 @@ void SpriteSheet::Draw(float x, float y, float size, float opacity)
 		bmp,
 		D2D1::RectF(x, y, x + bmp->GetSize().width * size, y + bmp->GetSize().height * size),
 		opacity,
-		D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR,
+		D2D1_BITMAP_INTERPOLATION_MODE_LINEAR,
 		D2D1::RectF(0.0f, 0.0f, bmp->GetSize().width, bmp->GetSize().height) 
 	);
 }

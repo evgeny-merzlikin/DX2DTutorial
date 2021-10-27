@@ -51,6 +51,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPWSTR cmd, int
 
 	ShowWindow(windowhandle, SW_NORMAL);
 
+	GameController::Init();
 	GameController::LoadInitialLevel(new Level1);
 
 
@@ -76,13 +77,6 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE prevInstance, LPWSTR cmd, int
 		
 
 	}
-
-	/*
-	
-	while (GetMessage(&message, NULL, 0, 0))
-	{
-		DispatchMessage(&message);
-	}*/
 
 	delete graphics;
 	return 0;
